@@ -73,28 +73,58 @@ footer{text-align:center;padding:60px 5vw 80px;color:var(--soft)}
 .pic.show div{animation:zoom .9s cubic-bezier(.2,1.6,.4,1)}
 @keyframes zoom{from{scale:.2}}
 .pic p{display:none}
+
+.bar2{position:fixed;top:0;left:0;height:4px;width:0;z-index:60;background:linear-gradient(90deg,var(--c),var(--a),var(--b));box-shadow:0 0 14px var(--a)}
+.icon{position:relative;width:min(190px,48vw);aspect-ratio:1;margin:64px 0 26px;animation:float 3.5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-14px)}}
+.ring{position:absolute;inset:0;border-radius:50%;padding:7px;background:conic-gradient(from 0deg,var(--b),var(--a),var(--c),var(--b));animation:spin 6s linear infinite;box-shadow:0 18px 50px var(--glow)}
+.icon img{position:absolute;inset:7px;width:calc(100% - 14px);height:calc(100% - 14px);border-radius:50%;object-fit:cover;object-position:50% 22%}
+.crown{position:absolute;left:50%;top:-56px;width:64%;transform:translateX(-50%) rotate(-8deg);transform-origin:50% 100%;filter:drop-shadow(0 8px 14px rgba(255,160,0,.55));animation:wob 2.6s ease-in-out infinite;cursor:pointer;z-index:2}
+@keyframes wob{50%{transform:translateX(-50%) rotate(8deg) translateY(-6px)}}
+.marq{overflow:hidden;white-space:nowrap;padding:16px 0;background:linear-gradient(90deg,var(--a),var(--b),var(--c));color:#fff;transform:rotate(-2deg);margin:20px -4vw;font:900 clamp(1.2rem,4vw,1.9rem) 'Unbounded',sans-serif;position:relative;z-index:2}
+.marq.rev{transform:rotate(1.5deg);background:linear-gradient(90deg,var(--c),var(--a))}
+.marq div{display:inline-block;animation:slide 20s linear infinite}
+.marq.rev div{animation-direction:reverse}
+@keyframes slide{to{transform:translateX(-50%)}}
+.ttitle{font-size:clamp(2.6rem,13vw,7.5rem);font-weight:900;letter-spacing:-.035em;text-align:center;background:linear-gradient(135deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+.tjoin{max-width:520px;margin:34px auto 20px;padding:34px;background:var(--card);border-radius:32px;text-align:center;box-shadow:0 12px 40px rgba(60,20,90,.14)}
+.tjoin h3{font-size:1.5rem;margin-bottom:8px}
+.tjoin p{color:var(--soft);margin-bottom:18px}
+.tjoin input{font:inherit;width:100%;padding:14px 18px;border-radius:99px;border:2px solid color-mix(in srgb,var(--soft) 35%,transparent);background:var(--bg);color:var(--ink);margin-bottom:14px;text-align:center}
+.tjoin input:focus{outline:none;border-color:var(--c)}
+.go{padding:14px 34px;border-radius:99px;background:linear-gradient(135deg,var(--a),var(--b));color:#fff;font-weight:700;box-shadow:0 10px 26px var(--glow)}
+.tbadge{display:none;margin-top:24px;padding:24px;border-radius:26px;background:linear-gradient(135deg,var(--c),var(--a));color:#fff}
+.tbadge.show{display:block;animation:pop .7s cubic-bezier(.2,1.6,.4,1)}
+.tbadge svg{width:54px}
+.tbadge b{display:block;font:900 1.4rem 'Unbounded',sans-serif;word-break:break-word}
+.members{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:700px;margin:0 auto}
+.chip{padding:8px 16px;border-radius:99px;background:var(--card);box-shadow:0 4px 14px rgba(60,20,90,.12);font-weight:700;animation:pop .5s cubic-bezier(.2,1.6,.4,1)}
+.big span:hover{filter:drop-shadow(0 0 22px var(--a))}
+.card:hover{box-shadow:0 18px 50px var(--glow)}
 canvas{position:fixed;inset:0;pointer-events:none;z-index:50;width:100%;height:100%}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
+<div class="bar2" id="bar2"></div>
 <div class="blobs"><div class="blob"></div><div class="blob"></div><div class="blob"></div></div>
 <div id="glow"></div>
 <canvas id="fx"></canvas>
 
 <nav>
 <b>Bola</b>
-<div><a href="#why">Why Bola</a><a href="#numbers">Numbers</a><a href="#hype">Hype</a>
+<div><a href="#why">Why Bola</a><a href="#numbers">Numbers</a><a href="#hype">Hype</a><a href="#team">Team Bola</a>
 <button class="theme" id="theme" aria-label="Toggle light or dark mode">🌗</button></div>
 </nav>
 
 <section class="hero">
-<div class="avatar"><span>B</span></div>
+<div class="icon"><svg class="crown" id="crownB" viewBox="0 0 100 70" aria-label="Crown"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe066"/><stop offset="1" stop-color="#ff9d00"/></linearGradient></defs><path d="M8 60 L2 14 L28 34 L50 4 L72 34 L98 14 L92 60 Z" fill="url(#g)" stroke="#c77700" stroke-width="3" stroke-linejoin="round"/><rect x="8" y="58" width="84" height="9" rx="4" fill="#ffc21a" stroke="#c77700" stroke-width="3"/><circle cx="2" cy="14" r="5" fill="#ff4f8b"/><circle cx="50" cy="4" r="5.5" fill="#6c4cff"/><circle cx="98" cy="14" r="5" fill="#ff4f8b"/><circle cx="50" cy="45" r="5" fill="#fff" opacity=".85"/></svg><div class="ring"></div><img alt="Bola" id="heroImg"></div>
 <h1 class="big" id="big" aria-label="Bola"><span>B</span><span>o</span><span>l</span><span>a</span></h1>
 <p class="tag">Officially <b id="typed"></b><span class="cur"></span></p>
 <button class="cta" id="boom">Tap for confetti</button>
 </section>
 
+<div class="marq" aria-hidden="true"><div class="mq"></div></div>
 <section id="why">
 <h2 class="reveal">Why Bola is the best</h2>
 <p class="lead reveal">Four reasons, and every card tilts toward you, because Bola always makes time for people.</p>
@@ -117,6 +147,7 @@ canvas{position:fixed;inset:0;pointer-events:none;z-index:50;width:100%;height:1
 </div>
 </section>
 
+<div class="marq rev" aria-hidden="true"><div class="mq2"></div></div>
 <section id="hype">
 <div class="meter reveal">
 <h2>Hype meter</h2>
@@ -128,6 +159,17 @@ canvas{position:fixed;inset:0;pointer-events:none;z-index:50;width:100%;height:1
 </div>
 </section>
 
+<section id="team">
+<h2 class="ttitle reveal">TEAM BOLA</h2>
+<div class="tjoin reveal">
+<h3>Join Team Bola</h3>
+<p>Type your name and get your crown.</p>
+<input id="tname" maxlength="20" placeholder="Your name" aria-label="Your name" autocomplete="off">
+<button class="go" id="tgo">Join the team</button>
+<div class="tbadge" id="tbadge"><svg viewBox="0 0 100 70"><path d="M8 60 L2 14 L28 34 L50 4 L72 34 L98 14 L92 60 Z" fill="#ffd23c"/></svg><b id="tbn"></b><span id="tbm"></span></div>
+</div>
+<div class="members" id="tmem" aria-label="Team members"></div>
+</section>
 <footer>Made with love for Bola. The best, obviously.</footer>
 
 <script>
@@ -179,6 +221,37 @@ names=['Warming up…','Getting loud 📣','Now we\'re talking 🔥','Crowd goin
 document.getElementById('tap').onclick=function(e){lv=Math.min(100,lv+9);fill.style.width=lv+'%';
 lvl.textContent=names[Math.min(5,Math.floor(lv/20))];boom(e.clientX,e.clientY,lv>=100?160:25);
 if(lv>=100){document.getElementById('pic').classList.add('show');setTimeout(function(){lv=0;fill.style.width='0%';lvl.textContent=names[0]},2200)}};
+
+// ---- v2 additions ----
+var pimg=document.querySelector('#pic img').src;
+document.getElementById('heroImg').src=pimg;
+var m1='BOLA ♛ THE BEST ♛ ',m2='TEAM BOLA ♛ ',a1='',a2='';for(var i=0;i<14;i++){a1+=m1;a2+=m2}
+document.querySelector('.mq').textContent=a1;document.querySelector('.mq2').textContent=a2+a2;
+document.getElementById('crownB').onclick=function(e){boom(e.clientX,e.clientY,100)};
+var bar2=document.getElementById('bar2');
+addEventListener('scroll',function(){var m=document.documentElement.scrollHeight-innerHeight;bar2.style.width=(m>0?scrollY/m*100:0)+'%'},{passive:true});
+var bl=document.querySelector('.blobs');
+addEventListener('pointermove',function(e){bl.style.transform='translate('+((e.clientX/innerWidth-.5)*-40)+'px,'+((e.clientY/innerHeight-.5)*-40)+'px)'});
+var lx=0,ly=0;
+addEventListener('pointermove',function(e){if(e.pointerType!=='mouse')return;if(Math.hypot(e.clientX-lx,e.clientY-ly)<26)return;lx=e.clientX;ly=e.clientY;
+ps.push({x:e.clientX,y:e.clientY,vx:(Math.random()-.5)*2,vy:Math.random()*-1.5,r:2+Math.random()*3,c:cols[Math.floor(Math.random()*5)],q:Math.random()*6,l:.7});if(!run){run=true;loop()}});
+document.querySelectorAll('.cta,.hype,.go').forEach(function(b){
+b.addEventListener('pointermove',function(e){var r=b.getBoundingClientRect();b.style.transform='translate('+((e.clientX-r.left-r.width/2)*.2)+'px,'+((e.clientY-r.top-r.height/2)*.3)+'px) scale(1.06)'});
+b.addEventListener('pointerleave',function(){b.style.transform=''})});
+var tm=[],tmem=document.getElementById('tmem');
+try{tm=JSON.parse(localStorage.getItem('teamBola')||'[]')}catch(e){}
+function esc(v){var d=document.createElement('div');d.textContent=v;return d.innerHTML}
+function tdraw(){tmem.innerHTML=tm.map(function(m){return '<span class="chip">♛ '+esc(m)+'</span>'}).join('')}
+tdraw();
+function tjoin(){var inp=document.getElementById('tname'),n=inp.value.trim();if(!n){inp.focus();return}
+tm.push(n);try{localStorage.setItem('teamBola',JSON.stringify(tm))}catch(e){}
+document.getElementById('tbn').textContent=n;
+document.getElementById('tbm').textContent='Welcome to Team Bola. Member #'+tm.length;
+var b=document.getElementById('tbadge');b.classList.remove('show');void b.offsetWidth;b.classList.add('show');
+tdraw();inp.value='';var r=document.getElementById('tgo').getBoundingClientRect();boom(r.left+r.width/2,r.top,130)}
+document.getElementById('tgo').onclick=tjoin;
+document.getElementById('tname').addEventListener('keydown',function(e){if(e.key==='Enter')tjoin()});
+document.querySelectorAll('#team .reveal').forEach(function(el){io.observe(el)});
 </script>
 </body>
 </html>
